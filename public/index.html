@@ -11,6 +11,7 @@
   gtag('config', 'G-PCDXNT62KC');
   </script>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>ZQ-UNM</title>
   <link rel="shortcut icon" href="./favicon.png" type="image/x-icon" />
   <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" />
@@ -172,6 +173,52 @@
     @keyframes fadeInResult {
       0% {opacity:0;transform:translateY(20px);}
       100% {opacity:1;transform:translateY(0);}
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 0 0.5rem;
+      }
+      .card {
+        padding: 1.2rem 0.5rem 1rem 0.5rem !important;
+        max-width: 100vw !important;
+        width: 100vw !important;
+        border-radius: 10px !important;
+      }
+      .ico img {
+        width: 120px !important;
+        height: 120px !important;
+      }
+      .title {
+        font-size: 1.3rem !important;
+      }
+      .text, ul, li {
+        font-size: 0.95rem !important;
+      }
+      input, button {
+        font-size: 1rem !important;
+      }
+      .footer-btn {
+        width: 38px !important;
+        height: 38px !important;
+      }
+      .footer-btn i {
+        font-size: 1.1rem !important;
+      }
+      main {
+        margin-top: 1.2rem !important;
+      }
+      .card form > div {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+        align-items: stretch !important;
+      }
+      .card form > div input {
+        width: 100% !important;
+      }
+      .card form > div button {
+        width: 100% !important;
+        margin: 0.2rem 0 0 0 !important;
+      }
     }
   </style>
 </head>
