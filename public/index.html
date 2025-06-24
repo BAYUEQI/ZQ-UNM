@@ -119,8 +119,12 @@
       border: 1px solid #ccc;
       border-radius: 4px;
       font-size: 1rem;
-      width: 220px;
+      width: 180px;
       margin-right: 0.5rem;
+    }
+
+    .input-area input#serverInput {
+      width: 160px;
     }
 
     .input-area button {
@@ -134,7 +138,12 @@
       transition: background 0.3s;
     }
 
-    .input-area button:hover {
+    .input-area button:disabled {
+      background: #bbb;
+      cursor: not-allowed;
+    }
+
+    .input-area button:hover:enabled {
       background: #005bb5;
     }
 
@@ -180,6 +189,18 @@
       margin-bottom: 1.5rem;
     }
 
+    .server-tips {
+      color: #e67e22;
+      font-size: 0.98rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .used-server {
+      color: #0078e7;
+      font-size: 0.98rem;
+      margin-top: 0.5rem;
+    }
+
     footer {
       margin-top: auto;
       padding: 1.5rem 0 0.5rem 0;
@@ -209,19 +230,22 @@
     <div class="step">
       <strong>使用步骤：</strong><br>
       1. 打开网易云网页版，找到你想听的歌，复制链接里的数字ID。<br>
-      2. 在下方输入框粘贴ID，点击"一键查歌"。<br>
+      2. 在下方输入框粘贴ID，填写音源（可选），点击"一键查歌"。<br>
       3. 复制下方的播放链接，在新标签页打开即可听歌或下载。<br>
       <span style="color:#e67e22;">（如不会找ID，举例：<br>https://music.163.com/#/song?id=<b>1962165898</b>，红色部分就是ID）</span>
     </div>
+    <div class="server-tips">如需自定义音源请填写server，否则使用推荐音源：<b>kuwo,kugou,bilibili</b></div>
     <div class="input-area">
-      <input type="text" id="songIdInput" placeholder="请输入网易云歌曲ID">
-      <button onclick="searchSong()">一键查歌</button>
+      <input type="text" id="songIdInput" placeholder="请输入网易云歌曲ID" oninput="checkInput()">
+      <input type="text" id="serverInput" placeholder="音源server(可选,逗号分隔)" oninput="checkInput()">
+      <button id="searchBtn" onclick="searchSong()" disabled>一键查歌</button>
     </div>
     <div class="tips">推荐音源：kuwo, kugou, bilibili（如需更高音质可加migu）</div>
     <div class="result-area" id="resultArea">
       <div class="result-label">播放链接：</div>
       <span id="songUrl"></span>
       <button class="copy-btn" onclick="copyUrl()">复制</button>
+      <div class="used-server" id="usedServer"></div>
     </div>
   </main>
   <footer>
@@ -242,25 +266,37 @@
     darkModeMediaQuery.addListener(toggleDarkMode);
     toggleDarkMode(darkModeMediaQuery);
 
+    // 检查输入，控制按钮可用
+    function checkInput() {
+      const id = document.getElementById('songIdInput').value.trim();
+      const btn = document.getElementById('searchBtn');
+      btn.disabled = !id;
+    }
+
     // 查歌功能
     function searchSong() {
       const id = document.getElementById('songIdInput').value.trim();
-      if (!id) {
-        alert('请输入网易云歌曲ID！');
-        return;
-      }
+      let server = document.getElementById('serverInput').value.trim();
       const resultArea = document.getElementById('resultArea');
       const songUrlSpan = document.getElementById('songUrl');
+      const usedServerDiv = document.getElementById('usedServer');
       resultArea.classList.remove('show');
       songUrlSpan.textContent = '查询中...';
-      fetch(`/match?id=${id}&server=kuwo,kugou,bilibili`)
+      usedServerDiv.textContent = '';
+      if (!server) {
+        server = 'kuwo,kugou,bilibili';
+        usedServerDiv.textContent = '本次使用音源：' + server + '（默认推荐）';
+      } else {
+        usedServerDiv.textContent = '本次使用音源：' + server;
+      }
+      fetch(`/match?id=${id}&server=${server}`)
         .then(res => res.json())
         .then(data => {
           if (data.code === 200 && data.data && data.data.url) {
             songUrlSpan.textContent = data.data.url;
             resultArea.classList.add('show');
           } else {
-            songUrlSpan.textContent = '未找到可用链接，请确认ID是否正确或换一首试试。';
+            songUrlSpan.textContent = '未找到可用链接，请确认ID和音源server是否正确或换一首试试。';
             resultArea.classList.add('show');
           }
         })
@@ -277,6 +313,8 @@
         alert('已复制到剪贴板！');
       });
     }
+    // 初始化按钮状态
+    checkInput();
   </script>
 </body>
 
