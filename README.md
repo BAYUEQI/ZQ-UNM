@@ -2,7 +2,7 @@
 
 <img src="./public/favicon.png" alt="logo" width="140" height="140" align="right">
 
-# 网易云音乐解灰API（UNM-Server）详细使用说明
+# ZQ-UNM（网易云音乐解灰）详细使用说明
 
 ---
 
