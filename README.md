@@ -14,10 +14,10 @@
 
 ```js
 // 安装依赖
-pnpm install
+npm install
 
 // 运行
-pnpm start
+npm start
 ```
 
 ## 反向代理
