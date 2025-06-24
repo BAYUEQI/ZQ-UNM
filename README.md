@@ -20,15 +20,8 @@
 2. Fork 本项目到你的 GitHub 账号
 3. 打开 Vercel 官网，点击 **New Project**，选择你 Fork 的仓库
 4. 保持默认设置，点击 **Deploy**，等待几分钟即可自动部署完成
-
-### 2.2 配置环境变量（可选）
-
-在 Vercel 项目设置的 **Environment Variables** 里添加：
-- `ENABLE_FLAC`：是否启用无损音质（true/false）
-- `PROXY_URL`：如需反向代理，填入你的代理地址
-- `QQ_COOKIE`、`MIGU_COOKIE` 等：如需用到对应音源，按需填写
-
-### 2.3 访问你的API服务
+5. 
+### 2.2 访问你的API服务
 
 - 部署完成后，Vercel 会分配一个域名，比如：
   ```
@@ -37,12 +30,6 @@
 - 你可以直接用这个域名访问API，例如：
   ```
   https://your-project-name.vercel.app/match?id=1962165898&server=kuwo,kugou
-  ```
-- 网页端入口：
-  ```
-  https://your-project-name.vercel.app/
-  ```
-
 ---
 
 ## 3. 本地安装与运行
