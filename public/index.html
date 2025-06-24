@@ -11,7 +11,7 @@
   gtag('config', 'G-PCDXNT62KC');
   </script>
   <meta charset="utf-8" />
-  <title>ZQ-UNM 网易云解灰小助手</title>
+  <title>ZQ-UNM</title>
   <link rel="shortcut icon" href="./favicon.png" type="image/x-icon" />
   <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" />
   <style>
@@ -32,10 +32,11 @@
     * {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
-    html, body {
+    html {
       height: 100%;
     }
 
@@ -47,7 +48,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
+      justify-content: space-between;
+      height: 100%;
     }
 
     .dark-mode body {
@@ -58,10 +60,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      width: 100%;
-      max-width: 500px;
-      margin-top: 30px;
+      justify-content: center;
+      height: 100%;
     }
 
     a {
@@ -75,181 +75,174 @@
     }
 
     .ico {
-      margin: 2rem 0 1rem 0;
+      margin: 4rem 2rem;
+      font-size: 6rem;
+      color: var(--text-color-gray);
     }
 
     .ico img {
-      width: 120px;
-      height: 120px;
+      width: 300px;
+      height: 300px;
     }
 
     .title {
       font-size: 2rem;
       font-weight: bold;
-      margin-bottom: 0.5rem;
     }
 
-    .desc {
-      color: #666;
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
+    .text {
+      margin: 1rem;
     }
 
-    .step {
-      background: #f7f7f7;
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-      line-height: 1.8;
-    }
-
-    .step strong {
-      color: #0078e7;
-    }
-
-    .input-area {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.2rem;
-    }
-
-    .input-area input {
+    .control button {
+      background-color: var(--text-color-hover);
+      border: var(--text-color) solid;
+      border-radius: 4px;
       padding: 0.5rem 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1rem;
-      width: 180px;
-      margin-right: 0.5rem;
-    }
-
-    .input-area input#serverInput {
-      width: 160px;
-    }
-
-    .input-area button {
-      background: #0078e7;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 0.5rem 1.2rem;
-      font-size: 1rem;
+      transition: all 0.5s ease;
+      margin: 1rem 0.2rem;
+      color: var(--text-color);
       cursor: pointer;
-      transition: background 0.3s;
     }
 
-    .input-area button:disabled {
-      background: #bbb;
-      cursor: not-allowed;
+    .control button:hover {
+      border: var(--text-color) solid;
+      background: var(--text-color);
+      color: var(--text-color-hover);
     }
 
-    .input-area button:hover:enabled {
-      background: #005bb5;
-    }
-
-    .result-area {
-      background: #f0f9ff;
-      border: 1px solid #b6e0fe;
-      border-radius: 6px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      width: 100%;
-      word-break: break-all;
-      display: none;
-    }
-
-    .result-area.show {
-      display: block;
-    }
-
-    .result-label {
-      font-weight: bold;
-      color: #0078e7;
-    }
-
-    .copy-btn {
-      margin-left: 10px;
-      background: #4caf50;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 0.2rem 0.7rem;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .copy-btn:hover {
-      background: #388e3c;
-    }
-
-    .tips {
-      color: #888;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .server-tips {
-      color: #e67e22;
-      font-size: 0.98rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .used-server {
-      color: #0078e7;
-      font-size: 0.98rem;
-      margin-top: 0.5rem;
+    .control button i {
+      margin-right: 6px;
     }
 
     footer {
-      margin-top: auto;
-      padding: 1.5rem 0 0.5rem 0;
-      text-align: center;
-      color: #aaa;
-      font-size: 0.95rem;
+      line-height: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 140px;
     }
 
-    @media (max-width: 600px) {
-      main {
-        max-width: 98vw;
-      }
-      .step, .result-area {
-        font-size: 0.98rem;
-      }
+    footer .social {
+      color: var(--icon-color);
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    footer .social i {
+      margin: 0 12px;
+    }
+
+    footer .point::before {
+      content: "·";
+      color: var(--text-color-gray);
+    }
+
+    .power,
+    .icp {
+      font-size: 14px;
+    }
+
+    input:focus {
+      box-shadow:0 0 0 2px #1976d244;
+    }
+    #queryBtn:hover {
+      background:linear-gradient(90deg,#1565c0,#64b5f6);
+      transform:translateY(-2px) scale(1.04);
+      box-shadow:0 4px 16px #1976d244;
+    }
+    #testBtn:hover {
+      background:linear-gradient(90deg,#11998e,#38f9d7);
+      transform:translateY(-2px) scale(1.04);
+      box-shadow:0 4px 16px #43e97b44;
+    }
+    .copy-btn:hover {
+      background:#ff9800!important;
+      color:#fff;
+      transform:scale(1.08);
+      box-shadow:0 2px 8px #ffb30044;
+    }
+    @keyframes floatLogo {
+      0% {transform:translateY(0);}
+      100% {transform:translateY(-16px);}
+    }
+    @keyframes fadeInResult {
+      0% {opacity:0;transform:translateY(20px);}
+      100% {opacity:1;transform:translateY(0);}
     }
   </style>
 </head>
 
-<body>
-  <main>
-    <div class="ico">
-      <img src="./favicon.png" alt="logo">
+<body style="background:linear-gradient(135deg,#f5f5f5 0%,#fffde4 100%);min-height:100vh;">
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;margin-top:3.5rem;">
+    <div style="background:radial-gradient(circle at 60% 40%,#90caf9 60%,#fff 100%);width:90px;height:90px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px #90caf955;">
+      <img src="./favicon.png" alt="logo" style="width:54px;height:54px;filter:drop-shadow(0 2px 8px #1976d233);">
     </div>
-    <div class="title">网易云音乐解灰小助手</div>
-    <div class="desc">让网易云变灰的歌也能听！</div>
-    <div class="step">
-      <strong>使用步骤：</strong><br>
-      1. 打开网易云网页版，找到你想听的歌，复制链接里的数字ID。<br>
-      2. 在下方输入框粘贴ID，填写音源（可选），点击"一键查歌"。<br>
-      3. 复制下方的播放链接，在新标签页打开即可听歌或下载。<br>
-      <span style="color:#e67e22;">（如不会找ID，举例：<br>https://music.163.com/#/song?id=<b>1962165898</b>，红色部分就是ID）</span>
-    </div>
-    <div class="server-tips">如需自定义音源请填写server，否则使用推荐音源：<b>kuwo,kugou,bilibili</b></div>
-    <div class="input-area">
-      <input type="text" id="songIdInput" placeholder="请输入网易云歌曲ID" oninput="checkInput()">
-      <input type="text" id="serverInput" placeholder="音源server(可选,逗号分隔)" oninput="checkInput()">
-      <button id="searchBtn" onclick="searchSong()" disabled>一键查歌</button>
-    </div>
-    <div class="tips">推荐音源：kuwo, kugou, bilibili（如需更高音质可加migu）</div>
-    <div class="result-area" id="resultArea">
-      <div class="result-label">播放链接：</div>
-      <span id="songUrl"></span>
-      <button class="copy-btn" onclick="copyUrl()">复制</button>
-      <div class="used-server" id="usedServer"></div>
+    <div style="font-size:2.1rem;font-weight:900;background:linear-gradient(90deg,#1976d2,#43e97b 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-top:1.1rem;letter-spacing:2px;text-align:center;">ZQ-UNM</div>
+    <div style="color:#888;font-size:1.05rem;margin-top:0.5rem;">网易云音乐解灰API - 多音源聚合</div>
+  </div>
+  <main style="display:flex;flex-direction:column;align-items:center;justify-content:center;margin-top:2.2rem;">
+    <div class="card" style="background:#fff;border-radius:18px;box-shadow:0 4px 24px #1976d211;padding:2.2rem 2.2rem 1.5rem 2.2rem;max-width:420px;width:95vw;display:flex;flex-direction:column;align-items:center;">
+      <div style="width:100%;border-bottom:1.5px solid #f5f5f5;padding-bottom:0.7rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:8px;">
+        <i class="fa-solid fa-circle-info" style="color:#1976d2;"></i>
+        <span style="font-weight:bold;font-size:1.08rem;">使用说明</span>
+      </div>
+      <ul style="font-size:0.98rem;line-height:1.7;width:100%;padding-left:0;list-style:none;margin-bottom:1.2rem;">
+        <li style='margin-bottom:0.5rem;'><i class="fa-solid fa-music" style="color:#1976d2;margin-right:7px;"></i><b>获取网易云歌曲ID：</b> 在网易云网页版点击歌曲，浏览器地址栏最后的数字即为ID，如 <span style='color:#1976d2;'>1962165898</span></li>
+        <li style='margin-bottom:0.5rem;'><i class="fa-solid fa-server" style="color:#43e97b;margin-right:7px;"></i><b>音源server可选值：</b>
+          <span style='color:#1976d2;background:#f5f5f5;border-radius:4px;padding:2px 7px;margin-right:3px;'>kuwo</span>
+          <span style='color:#1976d2;background:#f5f5f5;border-radius:4px;padding:2px 7px;margin-right:3px;'>kugou</span>
+          <span style='color:#1976d2;background:#f5f5f5;border-radius:4px;padding:2px 7px;margin-right:3px;'>migu</span>
+          <span style='color:#1976d2;background:#f5f5f5;border-radius:4px;padding:2px 7px;margin-right:3px;'>bilibili</span>
+          <span style='color:#1976d2;background:#f5f5f5;border-radius:4px;padding:2px 7px;margin-right:3px;'>ytdlp</span>
+          <span style='color:#1976d2;background:#f5f5f5;border-radius:4px;padding:2px 7px;margin-right:3px;'>qq</span>
+          <span style='color:#1976d2;background:#f5f5f5;border-radius:4px;padding:2px 7px;margin-right:3px;'>joox</span>
+          <span style='color:#1976d2;background:#f5f5f5;border-radius:4px;padding:2px 7px;margin-right:3px;'>youtube</span>
+          <span style='color:#1976d2;background:#f5f5f5;border-radius:4px;padding:2px 7px;margin-right:3px;'>ytdownload</span>
+          <span style='color:#1976d2;background:#f5f5f5;border-radius:4px;padding:2px 7px;margin-right:3px;'>youtubedl</span>
+          <span style='color:#1976d2;background:#f5f5f5;border-radius:4px;padding:2px 7px;margin-right:3px;'>pyncmd</span>
+        </li>
+        <li style='margin-bottom:0.5rem;'><i class="fa-solid fa-star" style="color:#ffb300;margin-right:7px;"></i><b>默认音源：</b> <span style='color:#1976d2;'>kuwo,kugou,migu,bilibili,ytdlp</span>（不填server时自动使用）</li>
+      </ul>
+      <form id="matchForm" style="width:100%;display:flex;flex-direction:column;align-items:center;gap:1.1rem;">
+        <div style="width:100%;display:flex;align-items:center;gap:0.7rem;background:#f8f9fa;border-radius:8px;padding:0.5rem 0.8rem;box-shadow:0 1px 4px #1976d211;">
+          <i class="fa-solid fa-music" style="color:#1976d2;font-size:1.1rem;"></i>
+          <input id="songId" type="text" placeholder="网易云歌曲ID，如 1962165898" style="flex:1;border:none;background:transparent;font-size:1.05rem;padding:0.3rem 0.2rem;outline:none;" required>
+        </div>
+        <div style="width:100%;display:flex;align-items:center;gap:0.7rem;background:#f8f9fa;border-radius:8px;padding:0.5rem 0.8rem;box-shadow:0 1px 4px #1976d211;">
+          <i class="fa-solid fa-server" style="color:#43e97b;font-size:1.1rem;"></i>
+          <input id="server" type="text" placeholder="音源server（可选），如 kuwo,kugou,bilibili" style="flex:1;border:none;background:transparent;font-size:1.05rem;padding:0.3rem 0.2rem;outline:none;">
+        </div>
+        <div style="width:100%;display:flex;gap:1.2rem;margin-top:0.5rem;">
+          <button type="submit" id="queryBtn" style="flex:1; background: linear-gradient(90deg,#1976d2,#64b5f6); color: #fff; border: none; border-radius: 8px; padding: 0.7rem 0; font-size: 1.08rem; font-weight: bold; cursor: pointer; box-shadow:0 2px 8px #1976d233; transition: background 0.3s,transform 0.2s,box-shadow 0.2s;">查询播放链接</button>
+          <button type="button" id="testBtn" style="flex:1; background: linear-gradient(90deg,#43e97b,#38f9d7); color: #fff; border: none; border-radius: 8px; padding: 0.7rem 0; font-size: 1.08rem; font-weight: bold; cursor: pointer; box-shadow:0 2px 8px #43e97b33; transition: background 0.3s,transform 0.2s,box-shadow 0.2s;">测试接口</button>
+        </div>
+      </form>
+      <div id="result" style="margin: 1.5rem 0 0.5rem 0; width:100%; word-break: break-all; background: linear-gradient(90deg,#f5f5f5 60%,#fceabb 100%); border-radius: 14px; min-height: 2.5rem; box-shadow: 0 4px 16px #1976d211; padding: 1.2rem 1.2rem; font-size: 1.08rem; border:2px solid #90caf9; opacity:0; animation:fadeInResult 0.8s forwards;"></div>
     </div>
   </main>
   <footer>
-    <div>项目地址 <a href="https://github.com/BAYUEQI/ZQ-UNM" target="_blank">GitHub</a> | 仅供学习交流</div>
+    <div class="social" style="display:flex;align-items:center;gap:28px;margin-top:1.5rem;">
+      <div class="footer-btn" title="GitHub" onclick="socialJump('github')" style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#1976d2 60%,#64b5f6 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px #1976d244;cursor:pointer;transition:transform 0.18s,box-shadow 0.18s;">
+        <i class="fa-brands fa-github" style="color:#fff;font-size:1.6rem;"></i>
+      </div>
+      <div class="footer-btn" title="主页" onclick="socialJump('home')" style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#43e97b 60%,#38f9d7 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px #43e97b44;cursor:pointer;transition:transform 0.18s,box-shadow 0.18s;">
+        <i class="fa-solid fa-house" style="color:#fff;font-size:1.5rem;"></i>
+      </div>
+      <div class="footer-btn" title="邮箱" onclick="socialJump('email')" style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ffb300 60%,#ff9800 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px #ffb30044;cursor:pointer;transition:transform 0.18s,box-shadow 0.18s;">
+        <i class="fa-solid fa-envelope" style="color:#fff;font-size:1.4rem;"></i>
+      </div>
+    </div>
+    <style>
+      .footer-btn:hover {
+        transform:scale(1.13);
+        box-shadow:0 4px 16px #1976d244,0 2px 8px #fff4;
+        z-index:2;
+      }
+    </style>
   </footer>
   <script>
     // 跟随系统主题
@@ -266,55 +259,91 @@
     darkModeMediaQuery.addListener(toggleDarkMode);
     toggleDarkMode(darkModeMediaQuery);
 
-    // 检查输入，控制按钮可用
-    function checkInput() {
-      const id = document.getElementById('songIdInput').value.trim();
-      const btn = document.getElementById('searchBtn');
-      btn.disabled = !id;
-    }
-
-    // 查歌功能
-    function searchSong() {
-      const id = document.getElementById('songIdInput').value.trim();
-      let server = document.getElementById('serverInput').value.trim();
-      const resultArea = document.getElementById('resultArea');
-      const songUrlSpan = document.getElementById('songUrl');
-      const usedServerDiv = document.getElementById('usedServer');
-      resultArea.classList.remove('show');
-      songUrlSpan.textContent = '查询中...';
-      usedServerDiv.textContent = '';
-      if (!server) {
-        server = 'kuwo,kugou,bilibili';
-        usedServerDiv.textContent = '本次使用音源：' + server + '（默认推荐）';
-      } else {
-        usedServerDiv.textContent = '本次使用音源：' + server;
+    // 查询播放链接
+    document.getElementById('matchForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const id = document.getElementById('songId').value.trim();
+      let server = document.getElementById('server').value.trim();
+      // 默认五个音源
+      const defaultServers = 'kuwo,kugou,migu,bilibili,ytdlp';
+      if (!id) {
+        showResult('请填写网易云歌曲ID！');
+        return;
       }
-      fetch(`/match?id=${id}&server=${server}`)
-        .then(res => res.json())
-        .then(data => {
-          if (data.code === 200 && data.data && data.data.url) {
-            songUrlSpan.textContent = data.data.url;
-            resultArea.classList.add('show');
-          } else {
-            songUrlSpan.textContent = '未找到可用链接，请确认ID和音源server是否正确或换一首试试。';
-            resultArea.classList.add('show');
+      if (!server) server = defaultServers;
+      showResult('查询中...');
+      try {
+        const res = await fetch(`/match?id=${encodeURIComponent(id)}&server=${encodeURIComponent(server)}`);
+        const data = await res.json();
+        if (data.code === 200 && data.data) {
+          let html = `<b>播放链接(url)：</b><br><a href="${data.data.url}" target="_blank" style="color:#1976d2;word-break:break-all;">${data.data.url}</a> <button class='copy-btn' data-copy='${data.data.url}' style='margin-left:8px;background:#ffb300;color:#fff;border:none;border-radius:4px;padding:0.2rem 0.7rem;cursor:pointer;font-size:0.98rem;transition:background 0.2s;'>复制</button><br><br>`;
+          if (data.data.proxyUrl) {
+            html += `<b>代理链接(proxyUrl)：</b><br><a href="${data.data.proxyUrl}" target="_blank" style="color:#388e3c;word-break:break-all;">${data.data.proxyUrl}</a> <button class='copy-btn' data-copy='${data.data.proxyUrl}' style='margin-left:8px;background:#ffb300;color:#fff;border:none;border-radius:4px;padding:0.2rem 0.7rem;cursor:pointer;font-size:0.98rem;transition:background 0.2s;'>复制</button><br>`;
           }
-        })
-        .catch(() => {
-          songUrlSpan.textContent = '查询失败，请稍后重试。';
-          resultArea.classList.add('show');
-        });
+          showResult(html);
+        } else {
+          showResult('未找到播放链接，或接口返回异常。');
+        }
+      } catch (err) {
+        showResult('请求失败，请检查服务是否正常运行。');
+      }
+    });
+
+    // 替换测试接口按钮事件
+    document.getElementById('testBtn').onclick = async function() {
+      showResult('查询中...');
+      try {
+        const res = await fetch('/test');
+        const data = await res.json();
+        showResult('<pre style="white-space:pre-wrap;word-break:break-all;font-size:1.02rem;">'+JSON.stringify(data,null,2)+'</pre>');
+      } catch (err) {
+        showResult('测试接口请求失败！');
+      }
+    };
+
+    function showResult(html) {
+      document.getElementById('result').innerHTML = html;
+      if(!html || html==='查询中...') {
+        document.getElementById('result').style.background='linear-gradient(90deg,#f5f5f5 60%,#fceabb 100%)';
+        document.getElementById('result').style.opacity='0.7';
+        document.getElementById('result').style.borderColor='#90caf9';
+      } else {
+        document.getElementById('result').style.background='linear-gradient(90deg,#fffde4 60%,#fceabb 100%)';
+        document.getElementById('result').style.opacity='1';
+        document.getElementById('result').style.borderColor='#43e97b';
+      }
     }
     // 复制功能
-    function copyUrl() {
-      const url = document.getElementById('songUrl').textContent;
-      if (!url || url.startsWith('未找到') || url.startsWith('查询失败')) return;
-      navigator.clipboard.writeText(url).then(() => {
-        alert('已复制到剪贴板！');
-      });
-    }
-    // 初始化按钮状态
-    checkInput();
+    document.addEventListener('click',function(e){
+      if(e.target && e.target.classList && e.target.classList.contains('copy-btn')){
+        const text = e.target.getAttribute('data-copy');
+        navigator.clipboard.writeText(text).then(()=>{
+          e.target.innerText='已复制!';
+          e.target.style.background='#43e97b';
+          setTimeout(()=>{
+            e.target.innerText='复制';
+            e.target.style.background='#ffb300';
+          },900);
+        });
+      }
+    });
+
+    // 社交链接跳转
+    const socialJump = (type) => {
+      switch (type) {
+        case "github":
+          window.location.href = "https://github.com/BAYUEQI/ZQ-UNM";
+          break;
+        case "home":
+          window.location.href = "https://nav.520jacky.dpdns.org";
+          break;
+        case "email":
+          window.location.href = "mailto:2839713837@qq.com";
+          break;
+        default:
+          break;
+      }
+    };
   </script>
 </body>
 
