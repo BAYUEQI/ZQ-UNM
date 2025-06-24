@@ -21,7 +21,7 @@
 ### 2.2 下载项目
 
 ```bash
-git clone https://github.com/你的仓库地址.git
+git clone https://github.com/BAYUEQI/ZQ-UNM.git
 cd ZQ-UNM-master
 ```
 
