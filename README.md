@@ -21,7 +21,14 @@
 3. 打开 Vercel 官网，点击 **New Project**，选择你 Fork 的仓库
 4. 保持默认设置，点击 **Deploy**，等待几分钟即可自动部署完成
 
-### 2.2 访问你的API服务
+### 2.2 配置环境变量（可选）
+
+在 Vercel 项目设置的 **Environment Variables** 里添加：
+- `ENABLE_FLAC`：是否启用无损音质（true/false）
+- `PROXY_URL`：如需反向代理，填入你的代理地址
+- `QQ_COOKIE`、`MIGU_COOKIE` 等：如需用到对应音源，按需填写
+
+### 2.3 访问你的API服务
 
 - 部署完成后，Vercel 会分配一个域名，比如：
   ```
@@ -68,7 +75,9 @@ npm start
 
 ---
 
-## 4. API接口使用方法
+## 4. API接口使用方法（Vercel云端推荐）
+
+> 以下所有接口示例均以 Vercel 云端部署为主，假如你本地部署，请将 `https://your-project-name.vercel.app` 替换为 `http://localhost:端口号`
 
 ### 4.1 获取网易云歌曲ID
 1. 打开网易云音乐网页版：https://music.163.com/
