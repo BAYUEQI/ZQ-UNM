@@ -27,9 +27,6 @@
   ```
   https://your-project-name.vercel.app
   ```
-- 你可以直接用这个域名访问API，例如：
-  ```
-  https://your-project-name.vercel.app/match?id=1962165898&server=kuwo,kugou
 ---
 
 ### 本地部署
